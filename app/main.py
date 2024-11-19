@@ -16,6 +16,14 @@ app.include_router(ops_user.router, prefix="/ops", tags=["Ops User"])
 # Serve the uploads directory via StaticFiles, so files are accessible
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
+from fastapi.responses import FileResponse
+from pathlib import Path
+
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse(Path("static/favicon.ico"))
+
+
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the secure file sharing system!"}
