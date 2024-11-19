@@ -6,13 +6,14 @@ from fastapi import HTTPException
 from app.utils import create_encrypted_url  # Your custom utility for encryption
 from dotenv import load_dotenv
 import os
+from urllib.parse import quote_plus
 
 # Load environment variables from .env file
 load_dotenv()
 
 def send_verification_email(user_email: str, user_id: int):
     encrypted_url = create_encrypted_url(user_id)
-    verification_url = f"http://127.0.0.1:8000/client/verify/{encrypted_url}"
+    verification_url = f"http://127.0.0.1:8000/client/verify/{quote_plus(encrypted_url)}"
 
     # Get SMTP configuration from environment variables
     sender_email = os.getenv("SMTP_USER")

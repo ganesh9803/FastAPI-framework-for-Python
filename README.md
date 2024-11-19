@@ -67,6 +67,36 @@ This is a FastAPI-based secure file sharing system with role-based access contro
 ├── requirements.txt         # Python dependencies
 └── README.md                # This file
 
+# API endpoints
+
+To start server: uvicorn app.main:app --reload
+
+client
+1.POST http://127.0.0.1:8000/client/signup
+
+2.POST http://127.0.0.1:8000/client/login
+
+3.GET http://127.0.0.1:8000/client/files
+  
+  Authorization : Bearer 
+  
+
+4.GET http://127.0.0.1:8000/client/download/
+
+5 GET http://127.0.0.1:8000/client/download-file/{file_path}
+
+
+
+Operation User
+1.POST http://127.0.0.1:8000/ops/signup
+
+2.POST http://127.0.0.1:8000/ops/login
+
+3.POST http://127.0.0.1:8000/ops/upload
+
+   Authorization : Bearer
+
+
 
 1. **Clone the repository**
 
